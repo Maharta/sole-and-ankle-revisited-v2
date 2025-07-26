@@ -32,13 +32,13 @@ const Header = () => {
         </DesktopNav>
         <MobileNav>
           <MobileNavButton>
-            <Icon id="shopping-bag" />
+            <Icon id="shopping-bag" color="black" />
           </MobileNavButton>
           <MobileNavButton>
-            <Icon id="search" />
+            <Icon id="search" color="black" />
           </MobileNavButton>
           <MobileNavButton>
-            <Icon id="menu" />
+            <Icon id="menu" color="black" />
           </MobileNavButton>
         </MobileNav>
         <Side />
@@ -110,6 +110,7 @@ const MobileNavButton = styled.button`
   cursor: pointer;
   border-radius: 4px;
   transition: background 0.2s;
+  padding-block: 4px;
 
   &:hover {
     background: ${COLORS.gray[100]};
