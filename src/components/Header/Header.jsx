@@ -30,7 +30,7 @@ const Header = () => {
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
         </DesktopNav>
-        <MobileNav>
+        <MobileActions>
           <MobileNavButton>
             <Icon id="shopping-bag" color="black" />
           </MobileNavButton>
@@ -40,7 +40,7 @@ const Header = () => {
           <MobileNavButton>
             <Icon id="menu" color="black" />
           </MobileNavButton>
-        </MobileNav>
+        </MobileActions>
         <Side />
       </MainHeader>
 
@@ -52,14 +52,6 @@ const Header = () => {
   );
 };
 
-const Side = styled.div`
-  flex: 1;
-
-  @media ${QUERIES.tabletAndDown} {
-    flex-grow: 0;
-  }
-`;
-
 const MainHeader = styled.div`
   display: flex;
   align-items: baseline;
@@ -70,10 +62,7 @@ const MainHeader = styled.div`
   @media ${QUERIES.tabletAndDown} {
     border-top: 4px solid ${COLORS.gray[900]};
     justify-content: space-between;
-
-    & > ${Side}:last-of-type {
-      display: none;
-    }
+    align-items: center;
   }
 
   @media ${QUERIES.phoneAndDown} {
@@ -91,8 +80,9 @@ const DesktopNav = styled.nav`
   }
 `;
 
-const MobileNav = styled.nav`
+const MobileActions = styled.nav`
   display: none;
+
   @media ${QUERIES.tabletAndDown} {
     display: flex;
     gap: 32px;
@@ -134,6 +124,18 @@ const NavLink = styled.a`
 
   &:first-of-type {
     color: ${COLORS.secondary};
+  }
+`;
+
+const Side = styled.div`
+  flex: 1;
+
+  @media ${QUERIES.tabletAndDown} {
+    flex-grow: 0;
+
+    ${MainHeader} > &:last-of-type {
+      display: none;
+    }
   }
 `;
 
