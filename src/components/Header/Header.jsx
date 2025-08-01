@@ -37,17 +37,14 @@ const Header = () => {
           <MobileNavButton>
             <Icon id="search" color="black" />
           </MobileNavButton>
-          <MobileNavButton>
+          <MobileNavButton onClick={() => setShowMobileMenu(true)}>
             <Icon id="menu" color="black" />
           </MobileNavButton>
         </MobileActions>
         <Side />
       </MainHeader>
 
-      <MobileMenu
-        isOpen={showMobileMenu}
-        onDismiss={() => setShowMobileMenu(false)}
-      />
+      <MobileMenu isOpen={showMobileMenu} onDismiss={setShowMobileMenu} />
     </header>
   );
 };
@@ -115,7 +112,7 @@ const MobileNavButton = styled.button`
   }
 `;
 
-const NavLink = styled.a`
+export const NavLink = styled.a`
   font-size: 1.125rem;
   text-transform: uppercase;
   text-decoration: none;
