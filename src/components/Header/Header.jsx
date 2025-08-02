@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 import { COLORS, QUERIES, WEIGHTS } from '../../constants';
@@ -9,11 +9,17 @@ import Icon from '../Icon';
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
+  const mobileNavButtonRef = useRef(null);
 
-  // For our mobile hamburger menu, we'll want to use a button
-  // with an onClick handler, something like this:
-  //
-  // <button onClick={() => setShowMobileMenu(true)}>
+  const onDialogStateChange = (state) => {
+    setShowMobileMenu(state);
+
+    if (state === false && mobileNavButtonRef.current) {
+      setTimeout(() => {
+        mobileNavButtonRef.current.focus();
+      }, 0);
+    }
+  };
 
   return (
     <header>
@@ -37,14 +43,17 @@ const Header = () => {
           <MobileNavButton>
             <Icon id="search" color="black" />
           </MobileNavButton>
-          <MobileNavButton onClick={() => setShowMobileMenu(true)}>
+          <MobileNavButton
+            onClick={() => setShowMobileMenu(true)}
+            ref={mobileNavButtonRef}
+          >
             <Icon id="menu" color="black" />
           </MobileNavButton>
         </MobileActions>
         <Side />
       </MainHeader>
 
-      <MobileMenu isOpen={showMobileMenu} onDismiss={setShowMobileMenu} />
+      <MobileMenu isOpen={showMobileMenu} onDismiss={onDialogStateChange} />
     </header>
   );
 };

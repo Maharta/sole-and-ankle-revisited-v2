@@ -57,7 +57,7 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
 };
 
 const Overlay = styled(DialogOverlay)`
-  position: absolute;
+  position: fixed;
   inset: 0;
   background-color: ${COLORS.overlay};
 `;
@@ -66,9 +66,9 @@ const Content = styled(DialogContent)`
   background-color: white;
   position: absolute;
   top: 0;
-  left: 20%;
   bottom: 0;
   right: 0;
+  width: 300px;
 `;
 
 const CloseButton = styled(UnstyledButton)``;
